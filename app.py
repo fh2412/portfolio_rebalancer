@@ -1,6 +1,6 @@
 import gradio as gr
 
-def perfect_rebalance(all_season_portfolio, current_values):
+def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
     """
     Rebalance the portfolio to match the target allocation perfectly.
 
@@ -12,6 +12,22 @@ def perfect_rebalance(all_season_portfolio, current_values):
     - updated_values (dict): Updated values of each asset class after rebalancing.
     - updated_weights (dict): Updated weights of each asset class after rebalancing.
     """
+    current_values = {
+        'Stocks': stocks,  # replace with your actual value
+        'Long_Term_Bonds': ltbonds,
+        'Intermediate_Term_Bonds': mtbonds,
+        'Gold': gold,
+        'Commodities': com
+    }
+    all_season_portfolio = {
+        'Stocks': 0.3,
+        'Long_Term_Bonds': 0.4,
+        'Intermediate_Term_Bonds': 0.15,
+        'Gold': 0.075,
+        'Commodities': 0.075
+    }
+
+    
     total_current_value = sum(current_values.values())
 
     # Calculate adjustments
