@@ -47,7 +47,16 @@ def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
     total_updated_value = sum(updated_values.values())
     updated_weights = {asset: value / total_updated_value for asset, value in updated_values.items()}
 
-    return updated_values, updated_weights
+    # Format result string for display
+    result_str = "Updated Portfolio Values:\n"
+    for asset, value in updated_values.items():
+        result_str += f"{asset}: ${value:.2f}\n"
+
+    result_str += "\nUpdated Portfolio Weights:\n"
+    for asset, weight in updated_weights.items():
+        result_str += f"{asset}: {weight:.2%}\n"
+
+    return result_str
 
 # Define the Gradio interface
 iface = gr.Interface(
@@ -60,8 +69,7 @@ iface = gr.Interface(
         gr.Textbox("Commodities", type="text"),
     ],
     outputs=[
-        gr.Textbox("Updated Portfolio Values"),
-        gr.Textbox("Updated Portfolio Weights")
+        gr.Textbox("Rebalance Result", type="text")
     ]
 )
 
