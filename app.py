@@ -1,26 +1,24 @@
 import gradio as gr
 
 def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
-    print(stocks, ltbonds, mtbonds, gold, com)
     """
     Rebalance the portfolio to match the target allocation perfectly.
 
     Parameters:
-    - all_season_portfolio (dict): Target allocation percentages for each asset class.
-    - current_values (dict): Current values of each asset class in the portfolio.
-
+    - stocks, ltbonds, mtbonds, gold, com (float): Current values for each asset class.
+    
     Returns:
-    - updated_values (dict): Updated values of each asset class after rebalancing.
-    - updated_weights (dict): Updated weights of each asset class after rebalancing.
+    - result_str (str): Formatted result string for display.
     """
+    # Convert input values to float
     stocks = float(stocks)
     ltbonds = float(ltbonds)
     mtbonds = float(mtbonds)
     gold = float(gold)
     com = float(com)
-    
+
     current_values = {
-        'Stocks': stocks,  # replace with your actual value
+        'Stocks': stocks,
         'Long_Term_Bonds': ltbonds,
         'Intermediate_Term_Bonds': mtbonds,
         'Gold': gold,
@@ -34,7 +32,6 @@ def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
         'Commodities': 0.075
     }
 
-    print(current_values)
     total_current_value = sum(current_values.values())
 
     # Calculate adjustments
@@ -50,6 +47,7 @@ def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
     # Format result string for display
     result_str = "Updated Portfolio Values:\n"
     for asset, value in updated_values.items():
+        adjustment = adjustments[asset]  # Amount needed for rebalancing
         result_str += f"{asset}: ${value:.2f} (Rebalance: ${adjustment:.2f})\n"
 
     result_str += "\nUpdated Portfolio Weights:\n"
