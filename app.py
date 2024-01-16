@@ -50,7 +50,7 @@ def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
     # Format result string for display
     result_str = "Updated Portfolio Values:\n"
     for asset, value in updated_values.items():
-        result_str += f"{asset}: ${value:.2f}\n"
+        result_str += f"{asset}: ${value:.2f} (Rebalance: ${adjustment:.2f})\n"
 
     result_str += "\nUpdated Portfolio Weights:\n"
     for asset, weight in updated_weights.items():
