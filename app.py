@@ -13,6 +13,12 @@ def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
     - updated_values (dict): Updated values of each asset class after rebalancing.
     - updated_weights (dict): Updated weights of each asset class after rebalancing.
     """
+    stocks = float(stocks)
+    ltbonds = float(ltbonds)
+    mtbonds = float(mtbonds)
+    gold = float(gold)
+    com = float(com)
+    
     current_values = {
         'Stocks': stocks,  # replace with your actual value
         'Long_Term_Bonds': ltbonds,
