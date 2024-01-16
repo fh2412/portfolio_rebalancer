@@ -1,6 +1,7 @@
 import gradio as gr
 
 def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
+    print(stocks, ltbonds, mtbonds, gold, com)
     """
     Rebalance the portfolio to match the target allocation perfectly.
 
@@ -27,7 +28,7 @@ def perfect_rebalance(stocks, ltbonds, mtbonds, gold, com):
         'Commodities': 0.075
     }
 
-    
+    print(current_values)
     total_current_value = sum(current_values.values())
 
     # Calculate adjustments
